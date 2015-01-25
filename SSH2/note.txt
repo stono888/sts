@@ -1,0 +1,41 @@
+1. add Spring
+1). add Spring jar
+2). configure web.xml, add Spring listener, add configuration file location
+3). add Spring configuration file
+
+2. add Hibernate
+1). create persistence class, auto create .hbm.xml file, auto create database tables
+2). Spring integrate Hibernate
+3). Steps:
+(1). add jars
+(2). create hibernate.cfg.xml file under classpath, set fundamental properties
+(3). create persistence class, auto create .hmb.xml file
+(4). integrate with Spring
+i. add c3p0 and MySQL driver jar
+ii. configure in spring configure-files: datasource, SessionFactory, declare transaction 
+(5). run the server, the database tables will be created.
+
+3. add Struts2
+1). add jars: delete duplicated jars: javassist-3.10.0.GA.jar, version 3.18 in Hibernate 
+2). configure Struts2's Filter in web.xml
+3). add Struts2's configuration file
+4). integrate with Spring
+(1). add Struts2-Spring jar file:struts2-spring-plugin-2.3.20.jar
+(2). add Action in Spring configuration file, set  action-scope prototype
+(3). set Action in Struts2 configuration file, class refer to the id in IOC
+
+4. function
+1). get all employees info; attention LazyInitializationException
+solutions:
+(1). set lazy="false" in employee.hbm.xml, do not recommended
+(2). use eager left out join fetch in DAO
+(3). use OpenSessionInViewFilter: close session after page loaded.
+2). delete employee information
+(1). just delete, return redirect, and redirect to emp-list
+(2). are you sure? -use ajax
+(3). Ajax use Struts2 help document
+3). add employee
+(1). show a employee form, search departments frist
+(2). Use ModelDriven and Preparable Interrupt of Struts2
+(3). change date string to date
+
